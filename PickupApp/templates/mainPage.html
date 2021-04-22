@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'mainpage.css' %}">
+    <title>Document</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+
+</head>
+<body>
+    <div id = 'wrapper'>
+        <header>
+            <div id= nav-bar>
+              
+                
+    
+                <nav>
+                    <ul class=nav_links >
+                    <li><a href ='/user/success'><img src='{% static "images/ball2.gif" %}'></a></li>
+                    <li> <a href ='/profile/{{current_user.id}}'> <img src='{% static "images/prof.png" %}' ></a</li>
+                    <li> <a href ='/AllCourt'><img src='{% static "images/hoop.png" %}'> </a></li>
+                    <li><a href ='/user/logout' > <img src='{% static "images/log.png" %}'></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    
+    
+
+        <div id= 'bannerholder' >
+            <div class='bannerarea'>
+                <h1>Hello {{current_user.username}}</h1>
+                
+                <img id='banner_img' src='{% static "images/profile.png" %}' >
+                <form action= '/user/pict' method="POST" enctype='multipart/form-data'>
+                    {% csrf_token %}
+                    
+                    <!-- <input id="image" type="file" name="profile_photo" placeholder="Photo" > -->
+                    <input type='button' value=' Upload new profile '>
+                </form>
+                <p class='bannerp'> <b>Age:</b>{{current_user.age }}</p>
+                <p class='bannerp'> <b>Hometown: </b>{{current_user.hometown}}</p>
+
+
+                <img id='pro_img' src='{% static "images/facebook.png" %}' >
+                <img id='pro_img2' src='{% static "images/twitter.png" %}' >
+                <img id='pro_img2' src='{% static "images/youtube.png" %}' >
+                <img id='pro_img2' src='{% static "images/instagran.png" %}' >
+                
+                
+            </div>
+
+            <div class='bannerarea2'>
+
+                <h2>Your Basketball Feed </h2>
+                    <!-- <div id='map' style='width: 600px; height: 400px;'></div> -->
+                    <form>
+                        
+                        <input type='text'  name='whats on your mind'>
+                        <input type = 'submit' value='Post' >
+                    </form>
+                
+            </div>
+        </div>
+    </div>
+
+
+    
+</body>
+</html>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoiam9hbmR5amIiLCJhIjoiY2tubDZuaXdwMGZjdDJ2bWtscThhMzk2ayJ9.t2B-HIIOMrncAtr6Opyqog';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v10',
+        center: [-77.03, 38.91],
+        zoom: 9
+    });
+    </script>

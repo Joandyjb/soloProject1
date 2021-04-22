@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Allcourt.css' %}">
+    <title>Document</title>
+</head>
+<body>
+  <div id = 'wrapper'>
+    <header>
+    
+      <div id= nav-bar>
+                
+        
+
+        <nav>
+            <ul class=nav_links >
+              <li><a href ='/user/success'><img src='{% static "images/ball2.gif" %}'></a></li>
+              <li> <a href ='/profile/{{current_user.id}}'> <img src='{% static "images/prof.png" %}' ></a</li>
+              <li> <a href ='/AllCourt'><img src='{% static "images/hoop.png" %}'> </a></li>
+              <li><a href ='/user/logout' > <img src='{% static "images/log.png" %}'></a></li>
+            </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class='bannerarea'>
+          <h1> All Avalaible courts</h1>
+              <table style="width:100%" class='styled-table'>
+                <thead>
+                    <tr>
+                      <th>List of Courts </th>
+                      <th>Amount of Players</th>
+                      
+                      <th> Location</th>
+                      <th> Last Updated </th>
+                      <th> Select Court</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      {%for court in Usercourt  %}
+                      <tr>
+                      <td>{{court.name}}</td>
+                        <td> {{court.players.all.count}}</td>
+                      <td>{{court.location}} </td>
+                      <td> {{court.updated_at}}</td>
+                      <td><a href='court/{{court.id}}'> <button>Select</button></a> </td>
+
+                    
+                    </tr>
+                  </tbody>    
+            {% endfor %} 
+      </table>
+    </div>
+  </div>   
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Passero+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    
+    
+}
+
+
+#wrapper{
+    width:100%;
+    margin: 0 auto;
+}
+
+header{
+    height: 130px;
+    background: white;
+    width: 100%;
+    z-index: 12;
+    position: fixed;
+    margin: auto;
+
+}
+
+
+.nav_links{
+    list-style: none;
+    padding: 0px 20px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.nav_links li a {
+    transition: all 0.3s ease 0s ;
+
+}
+
+.nav_links li a:hover {
+    color: red;
+    border:none;
+
+}
+
+.bannerarea {
+    width: 100%;
+	
+	position: fixed;
+	top: 130px;
+}
+
+img{
+width: 50px;
+height: 50px;
+margin-top: 5px;
+margin-left: 35px;
+margin-right: 35px;
+    
+}
+
+
+styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid black
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+button{
+    background-color: green;
+    border: 2px solid black;
+    height: 30px;
+    width: 50px;
+    border-radius: 4px ;
+    color: black;
+
+}
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'profile.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id = 'wrapper'>
+            <header>
+            
+                <div id= nav-bar>
+                        
+                </div>
+
+                <nav>
+                    <ul class=nav_links >
+                    <li><a href ='/user/success'><img src='{% static "images/ball2.gif" %}'></a></li>
+                    <li> <a href ='/profile/{{UserEditid.id}}'> <img src='{% static "images/prof.png" %}' ></a</li>
+                    <li> <a href ='/AllCourt'><img src='{% static "images/hoop.png" %}'> </a></li>
+                    <li><a href ='/user/logout' > <img src='{% static "images/log.png" %}'></a></li>
+                    </ul>
+                </nav>
+            </div>
+            </header>
+        
+
+        <div class='bannerarea'>
+            {% if messages %}
+            <ul >    
+                {% for message in messages %}    
+                    <li>{{ message }}</li>    
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+        
+            
+            
+            <!-- <form action= '/user/pict' method="POST" enctype='multipart/form-data'>
+                {% csrf_token %}
+                
+                <input id="image" type="file" name="profile_photo" placeholder="Photo" >
+                <input type='submit' value=' Upload new profile pict '>
+            </form> -->
+
+            <h1>Edit your profile!</h1>
+            <form action='/ProfileUpdate/{{UserEditid.id}}' method="POST">
+            {% csrf_token %}
+            
+            <label>First name
+                <input type = 'text' name= 'EUserFname' value ='{{UserEditid.first_Name }}'>
+            </label>
+
+            <label>Last name
+                <input type = 'text' name= 'EUserLname' value= '{{UserEditid.last_Name}}'>
+            </label>
+
+            <label>Username
+                <input type = 'text' name= 'UserUsername' value ='{{UserEditid.username}}'>
+            </label>
+        
+            <label>Email
+                <input type = 'text' name= 'EUserMail'  value ='{{UserEditid.email}}'> 
+            </label>
+
+            <label> Hometown
+                <input type = 'text' name= 'UserHometown' value ='{{UserEditid.hometown}}'>
+            </label>
+            
+            <label> Current Password
+                <input type = 'password' name= 'oldpass' >
+            </label>
+
+            <label> New Password
+                <input type = 'password' name= 'newpass' >
+            </label>
+
+            <label>Confirm Password
+                <input type = 'password' name= 'newconfirmPass'>
+            </label>
+
+            <input type='submit' value='Update Profile!'> 
+        </div>
+    </div>
+
+</body>
+</html>
