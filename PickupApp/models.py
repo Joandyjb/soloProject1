@@ -93,4 +93,24 @@ class User(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
+    
+    # class Friend(models.Model):
+    #     user = models.ManyToManyField(User, related_name='friendsadded')
 
+
+
+
+class Post(models.Model):
+    description = models.TextField()
+    poster = models.ForeignKey(User, related_name='quotes_posted', on_delete=models.CASCADE)
+    liker = models.ManyToManyField(User, related_name='feed_liked')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+class Comment(models.Model):
+    comment_field = models.TextField()
+    commenter = models.ForeignKey(User, related_name='posted_comment', on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, related_name="commented_post", on_delete=models.CASCADE)
+    cliker = models.ManyToManyField(User, related_name='comment_liked')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

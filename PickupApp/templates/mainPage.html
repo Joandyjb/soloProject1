@@ -57,12 +57,42 @@
             <div class='bannerarea2'>
 
                 <h2>Your Basketball Feed </h2>
-                    <!-- <div id='map' style='width: 600px; height: 400px;'></div> -->
-                    <form>
-                        
-                        <input type='text'  name='whats on your mind'>
+                    <form action='/UserPost' method="POST">
+                        {% csrf_token %}
+                        <input type='text'  name='whats_on_your_mind'>
                         <input type = 'submit' value='Post' >
                     </form>
+
+                {% for post in All_Post reversed %}
+                    
+                    <p>{{post.description}}</p>
+                    <p>{{post.Poster.first_Name}}</p>
+                    <p>{{post.created_at}}</p>
+                    <form action='/like_post/{{post.id}}'  >
+                        {% csrf_token %}
+                        <input type='submit' value='{{post.liker.all.count}} Like'>
+                    </form> 
+                    <br>
+                    <br>
+                    <h3>Leave Comment</h3>
+                    
+                    {% for comment in post.commented_post.all %}
+                     
+                    <p>{{comment.comment_field }}</p>
+                    <p>{{comment.commenter.first_Name}} {{comment.commenter.last_Name}}</p>
+                    <p> {{comment.created_at }} </p>
+                    <form action='/like_comment/{{comment.id}}'  >
+                        {% csrf_token %}
+                        <input type='submit' value='{{comment.cliker.all.count}} Like'>
+                    </form> 
+                    {% endfor %} 
+                    <form action='/Usercomment/{{post.id}}' method="POST" >
+                        {% csrf_token %}
+
+                        <input type='text' name ='the_comment'>
+                        <input type='submit' value='Submit your Comment'>
+                    </form> 
+                {% endfor %} 
                 
             </div>
         </div>

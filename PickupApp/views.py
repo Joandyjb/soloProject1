@@ -51,11 +51,48 @@ def success(request):
     if 'User_id' not in request.session:
         return redirect('/')
     context = {
-        'current_user':User.objects.get(id=request.session['User_id']),
+        'current_user': User.objects.get(id=request.session['User_id']),
+        'All_Post': Post.objects.all(),
+        'All_comment': Comment.objects.all()
     }
     
     return render(request,'mainPage.html', context)
 
+
+def create_post(request):
+    if 'User_id' not in request.session:
+        return redirect('/')
+    All_Post= Post.objects.create(
+        description= request.POST['whats_on_your_mind'],
+        poster = User.objects.get(id=request.session['User_id']))
+    return redirect ('/user/success')
+
+
+def like_post(request, post_id):
+    if  'user_id' not in request.session:
+        Post_like = Post.objects.get(id=post_id)
+        Post_like.liker.add(User.objects.get(id=request.session['User_id']))
+        Post_like.save()
+        return redirect('/user/success')
+    return redirect('/')
+
+def create_comment(request, post_id):
+    if 'User_id' not in request.session:
+        return redirect('/')
+    new_comment= Comment.objects.create(
+    comment_field= request.POST.get('the_comment'),
+    commenter = User.objects.get(id=request.session['User_id']),
+    post = Post.objects.get(id=post_id))
+    return redirect ('/user/success')
+    # make a new function and path for info to go to user success
+
+def like_comment(request, comment_id):
+    if 'User_id' not in request.session:
+        return redirect('/')
+    comment_like = Comment.objects.get(id=comment_id)
+    comment_like.cliker.add(User.objects.get(id=request.session['User_id']))
+    comment_like.save()
+    return redirect('/user/success')
 
 def default_map(request):
     # TODO: move this token to Django settings from an environment variable
@@ -79,11 +116,6 @@ def edit(request, the_userInfo_id ):
     
     
     
-    
-    
-    
-    
-    
 def Update(request, the_userInfo_id):  
     if request.method =='POST':   
         errors = User.objects.Edit_validator(request.POST)
@@ -104,7 +136,7 @@ def Update(request, the_userInfo_id):
                         userlog.Password = pw_hash
                     else:
                         messages.error(request,"Invalid Email/ Password Combination")
-                        return redirect(f'/profile/edit/{UserUptadeInfo_id}')
+                        return redirect(f'/profile/edit/{the_userInfo_id}')
                 userlog.first_Name= request.POST['EUserFname']
                 userlog.last_Name = request.POST['EUserLname']
                 userlog.username = request.POST['UserUsername']
@@ -125,7 +157,6 @@ def Allcourt (request):
     return render(request,'Allcourts.html', context )
 
 
-   
 def court(request, courtid):
     context = {
         'Usercourt' : Court.objects.get(id=courtid),
