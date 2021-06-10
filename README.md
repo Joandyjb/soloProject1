@@ -2,11 +2,11 @@
 
 This project is still currently in progress
 
-My project idea is a basketball pickup game website. My target audience would be young adults that play basketball.  It would be used to track how many people are at all courts near you.
-So if the user wants to go to a court where there are fewer people so they can shoot around they can do or if they want to play with other people they also have that info based on the info given on the app. The users also have a platform where they can interact with each other make post and feeds with anyone within they picked friend group.
+My project idea is a basketball pickup game website. My target audience is young adults that enjoy playing basketball. It’s purpose is  tracking the amount people in surrounding basketball courts.
+The website provides users all the information needed for them to decide which courts to go to based how many people they feel most comfortable playing with. Users also have a platform where they can interact with each other make posts and feeds with anyone within their picked friend group.
 
 
- PROJECT FEATURES
+ # PROJECT FEATURES
 -Able to track how many players are at courts near you 
 -Able to change zip code if planning on going somewhere further away 
 -What time court are most active and not  
