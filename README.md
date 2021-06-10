@@ -6,7 +6,7 @@ My project idea is a basketball pickup game website. My target audience would be
 So if the user wants to go to a court where there are fewer people so they can shoot around they can do or if they want to play with other people they also have that info based on the info given on the app. The users also have a platform where they can interact with each other make post and feeds with anyone within they picked friend group.
 
 
-Features
+ PROJECT FEATURES
 -Able to track how many players are at courts near you 
 -Able to change zip code if planning on going somewhere further away 
 -What time court are most active and not  
